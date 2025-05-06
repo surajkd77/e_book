@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Select Semester</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: none;
+    }  
+    
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        min-height: 100vh;
+        perspective: 1000px;
+    }
+    
+    .dashboard {
+        display: flex;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+    
+    nav {
+        position: relative;
+        height: 120vh;
+        background: rgba(255, 255, 255, 0.9);
+        width: 250px;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+        backdrop-filter: blur(5px);
+        transform-style: preserve-3d;
+        transition: all 0.5s ease;
+        z-index: 10;
+    }
+    
+    nav:hover {
+        transform: translateZ(20px);
+        box-shadow: 5px 0 35px rgba(0,0,0,0.2);
+    }
+    
+    nav ul li {
+        display: flex;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+        border-radius: 0 30px 30px 0;
+        transform-style: preserve-3d;
+    }
+    
+    nav ul li:hover {
+        background: rgba(74, 107, 255, 0.1);
+        transform: translateX(10px) translateZ(10px);
+    }
+    
+    a {
+        position: relative;
+        color: #333;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        padding: 20px 30px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+        color: #4a6bff;
+    }
+    
+    .dash-img {
+        width: 18px;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li:hover .dash-img {
+        transform: scale(1.2) translateZ(5px);
+    }
+    
+    .img-dash {
+        width: 70%;
+        margin: 30px auto;
+        display: block;
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+    }
+    
+    .img-dash:hover {
+        transform: rotate(5deg) scale(1.05) translateZ(10px);
+    }
+    
+    .course-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 50px auto;
+        gap: 40px;
+        padding: 0 50px;
+        width: 100%;
+        transform-style: preserve-3d;
+    }
+    
+    .mech {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        height: 250px;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+        animation: floatIn 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    @keyframes floatIn {
+        to {
+            opacity: 1;
+            transform: translateY(0) translateZ(20px);
+        }
+    }
+    
+    .mech:nth-child(1) { animation-delay: 0.1s; }
+    .mech:nth-child(2) { animation-delay: 0.2s; }
+    .mech:nth-child(3) { animation-delay: 0.3s; }
+    .mech:nth-child(4) { animation-delay: 0.4s; }
+    .mech:nth-child(5) { animation-delay: 0.5s; }
+    .mech:nth-child(6) { animation-delay: 0.6s; }
+    
+    .mech:hover {
+        transform: translateY(-10px) translateZ(30px) rotateY(10deg);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .mech h3 {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transform: translateZ(20px);
+    }
+    
+    .mech button {
+        width: 120px;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #4a6bff 0%, #6a5acd 100%);
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        transform-style: preserve-3d;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .mech button:hover {
+        transform: translateY(-3px) translateZ(10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        background: linear-gradient(135deg, #5a7bff 0%, #7b6add 100%);
+    }
+    
+    /* 3D floating background elements */
+    .floating-element {
+        position: absolute;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        animation: float3d 15s infinite ease-in-out;
+        transform-style: preserve-3d;
+        border: 1px solid rgba(255,255,255,0.1);
+        z-index: -1;
+    }
+    
+    .element-1 {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        right: 10%;
+        animation-delay: 0s;
+        transform: rotateX(20deg) rotateY(20deg) translateZ(-100px);
+    }
+    
+    .element-2 {
+        width: 200px;
+        height: 200px;
+        bottom: 15%;
+        left: 15%;
+        animation-delay: 2s;
+        transform: rotateX(-15deg) rotateY(15deg) translateZ(-80px);
+        border-radius: 50%;
+    }
+    
+    @keyframes float3d {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg) translateZ(-100px);
+        }
+        50% {
+            transform: translateY(-20px) rotate(5deg) translateZ(-80px);
+        }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .course-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .dashboard {
+            flex-direction: column;
+        }
+        
+        nav {
+            width: 100%;
+            height: auto;
+        }
+        
+        .course-list {
+            grid-template-columns: 1fr;
+            padding: 20px;
+        }
+        
+        .mech {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <!-- 3D background elements -->
+    <div class="floating-element element-1"></div>
+    <div class="floating-element element-2"></div>
+    
+    <div class="dashboard">
+        <nav>
+            <img src="image/logo.png" alt="Logo" class="img-dash animate__animated animate__fadeIn">
+            <ul>
+                <li class="animate__animated animate__fadeInLeft">
+                    <a href="dashboard.html">
+                        <img src="/Backend/image/home.png" alt="" class="dash-img">
+                        Home
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.1s">
+                    <a href="#">
+                        <img src="/Backend/image/learning.png" alt="" class="dash-img">
+                        Explore Job
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.2s">
+                    <a href="#">
+                        <img src="/Backend/image/learning.png" alt="" class="dash-img">
+                        Explore Course
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">
+                    <a href="helpdesk.html">
+                        <img src="/Backend/image/customer-service.png" alt="" class="dash-img">
+                        Helpdesk
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.4s">
+                    <a href="#">
+                        <img src="/Backend/image/logout.png" alt="" class="dash-img">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="course-list">
+            <div class="mech">
+                <h3>Semester 1</h3>
+                <a href="#click">
+                    <button>View Courses</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Semester 2</h3>
+                <a href="#click">
+                    <button>View Courses</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Semester 3</h3>
+                <a href="#click">
+                    <button>View Courses</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Semester 4</h3>
+                <a href="#click">
+                    <button>View Courses</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Semester 5</h3>
+                <a href="#click">
+                    <button>View Courses</button>
+                </a>
+            </div>
+            
+            <div class="mech">
+                <h3>Semester 6</h3>
+                <a href="6th sem cse.html">
+                    <button>View Courses</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

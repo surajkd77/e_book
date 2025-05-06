@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+       <title>Er Station</title>
+</head>
+<body>
+   <nav>
+    <img src="/Backend//image/logo.png" alt="" class="logo">
+    <ul>
+        <li><a href="/dashboard.html">Home</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#">Syllabus</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="Backend/login.html">
+     <a href="/Backend/login.html"><button class="login-button">Login <img src="/Backend/image/login.png" alt="login"></button></a>
+</a>
+   </nav>
+   <div class="header">
+    <h1>ONLINE<br>PLATFORM</h1>
+    <div class="skill">
+        <p>To Make Your Skill Better</p>
+    </div>
+    <div class="button-signup">
+         <a href="/Backend/signup.html"><button class="btn1">Sign Up  <img src="/Backend/image/login.png" alt="btn"></button></a>
+        <button class="btn2">Know More <img src="/Backend/image/arrow-black.png" alt="btn"></button>
+    </div>
+    <img src="/Backend/image/boy.png" class="smart-boy" alt="Boy">
+   </div>
+
+   <div id="about-us" class="about-us">
+    <div class="about">
+        <img src="/Backend/image/contact.jpg" alt="img">
+        <div class="about-header">
+            <h1 class="title">About Us</h1>
+            <hr>
+            <p class="slogan">Hey everyone this is <b>suraj</b> and I'm the 3rd Year Engineering Student study at 
+                <b>Government Polytechnic, Purnea</b>.
+                Our team made this project  to help the students and provide the study materials free and how to become  <b>developer</b> </p>
+                <button class="btn-about">Explore More...</button>
+        </div>
+    </div>
+   </div>
+      <div class="contact-us">
+                <form action="https://api.web3forms.com/submit" method="POST"class="form-class">
+                    <div class="in-touch">
+                        <h1>Get in touch</h1>
+                        <hr>
+                    </div>
+            <input type="hidden" name="access_key" value="6f8550fd-bd3f-4af3-8b7a-c66a0f8cc7bd">
+            <input type="text" name="name" placeholder="Name" class="contactname" required>
+            <input type="email" name="email" placeholder="E-mail" class="contactname" required>
+            <textarea name="message" placeholder="Your Message" class="contactname"></textarea>
+            <button type="submit">Submit <img src="/Backend/image/arrow-white.png" alt="submit"></button>
+        </form>
+        <div class="contact-img">
+            <img src="/Backend/image/right_img.png" alt="">
+        </div>
+    </div>
+
+    <footer>
+<div class="row">
+Er Station Copyright © 2023-24 - All rights reserved || Designed By: <b>Er Station</b> 
+</div>
+</footer>
+
+   <script>
+    let navbar = document.querySelector('nav');
+    window.onscroll=function(){
+        if(window.scrollY > 0){
+            navbar.style.background = '#f0ffff';
+        }
+        else{
+            navbar.style.background = 'transparent';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+    <title>Find JOb</title>
+</head>
+<style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+}  
+body{
+    background: #dfe9f5;
+}
+.dashboard{
+    display: flex;
+
+}
+nav{
+    position: relative;
+    height: 120vh;
+    background: #fff;
+    width: 220px;
+}
+nav ul li{
+    display: flex;
+    margin-top: 10px;
+}
+
+a{
+    position: relative;
+    color: black;
+    display: table;
+    font-size: 15px;
+    padding: 30px;
+    
+}
+.dash-img{
+    width: 15px;
+    position: relative;
+    margin-top: 3px;
+    margin-right: 10px;
+    float: left;
+}
+.img-dash{
+    display: flex;
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.head-main h1{
+    display: flex;
+    text-align: center;
+}
+.course-list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    margin: 10px auto;
+    gap: 50px;
+}
+.mech{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    height: 30vh;
+    gap: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.463);
+    border-radius: 30px;
+}
+.mech img{
+    width: 60%;
+    border-radius: 30px;
+}
+.mech button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    background: rgb(104, 104, 239);
+    color: white;
+    cursor: pointer;
+}
+</style>
+<body>
+    <div class="dashboard">
+        <nav>
+                <img src="/Backend/image/logo.png" alt="Logo" class="img-dash">
+            <ul>
+                <li><a href="dashboard.html">Home <img src="/Backend/image/home.png" alt="" class="dash-img"></a></li>
+                <li><a href="job-find.html">career opportunity <img src="/Backend/image/learning.png" alt="" class="dash-img"></a></li>
+                <li><a href="course.html">Explore Course <img src="/Backend/image/learning.png" alt="" class="dash-img"></a></li>
+                <li><a href="helpdesk.html">Helpdesk <img src="/Backend/image/customer-service.png" alt="" class="dash-img"></a></li>
+                <li><a href="logout.html">Logout <img src="/Backend/image/logout.png" alt="" class="dash-img"></a></li>
+            </ul>
+        </nav>
+        <div class="course-list">
+            <div class="mech">
+                <h3>Data Analyis </h3>
+                <a href="/pdf/data-analyst-roadmap.pdf">
+                    <button>Click Here</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Data Entry </h3>
+                <a href="#click">
+                    <button>Click Here</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Freelancer </h3>
+                <a href="#click">
+                    <button>Click Here</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>PHP Developer </h3>
+                <a href="#click">
+                    <button>Click Here</button>
+                </a>
+            </div>
+
+            <div class="mech">
+                <h3>Frontend Developer</h3>
+            <a href="#click">
+                    <button>Click Here</button>
+                </a>
+            </div>
+            <div class="mech">
+                <h3>Backend Developer </h3>
+            <a href="6th sem cse.html">
+                    <button>Click Here</button>
+                </a>
+            </div>
+
+        </div>
+        
+</body>
+</html>

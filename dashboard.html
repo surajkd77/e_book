@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Dashboard</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: none;
+    }  
+    
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+        perspective: 1000px;
+    }
+    
+    .dashboard {
+        display: flex;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+    
+    nav {
+        position: relative;
+        height: 100vh;
+        background: #fff;
+        width: 250px;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        z-index: 10;
+        transition: all 0.3s ease;
+        transform: translateZ(20px);
+    }
+    
+    nav:hover {
+        box-shadow: 5px 0 25px rgba(0,0,0,0.3);
+        transform: translateZ(30px) rotateY(5deg);
+    }
+    
+    nav ul li {
+        display: flex;
+        margin-top: 5px;
+        transition: all 0.3s ease;
+        border-radius: 0 30px 30px 0;
+        transform-style: preserve-3d;
+    }
+    
+    nav ul li:hover {
+        background: #f0f0f0;
+        transform: translateX(5px) translateZ(10px);
+    }
+    
+    nav ul li a {
+        position: relative;
+        color: #333;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        padding: 20px 30px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+        color: #4a6bff;
+    }
+    
+    .dash-img {
+        width: 18px;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li:hover .dash-img {
+        transform: scale(1.1) translateZ(5px);
+    }
+    
+    .img-dash {
+        width: 70%;
+        margin: 30px auto;
+        display: block;
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+    }
+    
+    .img-dash:hover {
+        transform: rotate(5deg) scale(1.05) translateZ(10px);
+    }
+    
+    .user {
+        position: absolute;
+        right: 50px;
+        top: 30px;
+        z-index: 5;
+        transform-style: preserve-3d;
+    }
+    
+    .user-pfp {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        transform-style: preserve-3d;
+    }
+    
+    .user-pfp:hover {
+        transform: scale(1.1) rotate(5deg) translateZ(20px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    
+    .welcome {
+        padding-left: 50px;
+        color: white;
+        position: relative;
+        z-index: 1;
+        transform-style: preserve-3d;
+    }
+    
+    .welcome h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 5rem;
+        padding-top: 100px;
+        margin-bottom: 20px;
+        line-height: 1;
+        text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        animation: fadeInDown 1s both;
+        transform: translateZ(30px);
+    }
+    
+    .welcome h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #ffffff;
+        text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        animation: fadeIn 1s both 0.3s;
+        transform: translateZ(20px);
+    }
+    
+    .welcome p {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #e0e0e0;
+        max-width: 600px;
+        animation: fadeIn 1s both 0.6s;
+        transform: translateZ(10px);
+    }
+    
+    /* 3D floating elements */
+    .floating-element {
+        position: absolute;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        animation: float3d 15s infinite ease-in-out;
+        transform-style: preserve-3d;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .element-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        right: -100px;
+        animation-delay: 0s;
+        transform: rotateX(20deg) rotateY(20deg) translateZ(50px);
+    }
+    
+    .element-2 {
+        width: 200px;
+        height: 200px;
+        bottom: 100px;
+        right: 200px;
+        animation-delay: 2s;
+        transform: rotateX(-15deg) rotateY(15deg) translateZ(30px);
+        border-radius: 50%;
+    }
+    
+    .element-3 {
+        width: 150px;
+        height: 150px;
+        top: 40%;
+        left: 30%;
+        animation-delay: 4s;
+        transform: rotateX(10deg) rotateY(-10deg) translateZ(40px);
+    }
+    
+    /* Animations */
+    @keyframes float3d {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg) translateZ(50px);
+        }
+        50% {
+            transform: translateY(-20px) rotate(5deg) translateZ(70px);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateZ(0);
+        }
+        to {
+            opacity: 1;
+            transform: translateZ(20px);
+        }
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) translateZ(0);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) translateZ(30px);
+        }
+    }
+    
+    /* Glow effect */
+    .glow {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(74,107,255,0.4) 0%, rgba(74,107,255,0) 70%);
+        filter: blur(10px);
+        animation: pulse 4s infinite alternate;
+        transform-style: preserve-3d;
+    }
+    
+    .glow-1 {
+        top: 20%;
+        left: 10%;
+        transform: translateZ(-50px);
+    }
+    
+    .glow-2 {
+        bottom: 15%;
+        right: 15%;
+        transform: translateZ(-30px);
+        animation-delay: 1s;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(0.8) translateZ(-50px);
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.2) translateZ(-30px);
+            opacity: 0.3;
+        }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .welcome h1 {
+            font-size: 3rem;
+            padding-top: 80px;
+        }
+        
+        .welcome h2 {
+            font-size: 1.8rem;
+        }
+        
+        /* Reduce 3D effects on mobile */
+        body {
+            perspective: 500px;
+        }
+        
+        nav {
+            transform: translateZ(10px);
+        }
+        
+        nav:hover {
+            transform: translateZ(15px) rotateY(2deg);
+        }
+    }
+</style>
+
+<body>
+    <!-- 3D floating elements -->
+    <div class="floating-element element-1"></div>
+    <div class="floating-element element-2"></div>
+    <div class="floating-element element-3"></div>
+    
+    <!-- Glow effects -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <div class="dashboard">
+        <nav>
+            <img src="/Backend/image/logo.png" alt="Logo" class="img-dash animate__animated animate__fadeIn">
+            <ul>
+                <li class="animate__animated animate__fadeInLeft">
+                    <a href="">
+                        <img src="image/home.png" alt="" class="dash-img">
+                        Home
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.1s">
+                    <a href="job-find.html">
+                        <img src="/Backend/image/learning.png" alt="" class="dash-img">
+                        Career Opportunity
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.2s">
+                    <a href="course.html">
+                        <img src="/Backend/image/learning.png" alt="" class="dash-img">
+                        Explore Course
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">
+                    <a href="helpdesk.html">
+                        <img src="/Backend/image/customer-service.png" alt="" class="dash-img">
+                        Helpdesk
+                    </a>
+                </li>
+                <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.4s">
+                    <a href="index.html">
+                        <img src="/Backend/image/logout.png" alt="" class="dash-img">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="user animate__animated animate__fadeIn">
+            <img src="/Backend/image/avatar.svg" alt="user profile" class="user-pfp">
+        </div>
+        
+        <div class="welcome">
+            <h1 class="animate__animated animate__fadeInDown">Hello, Everyone</h1>
+            <h2>Welcome to Er Station</h2>
+            <p>(The Student Helping Website)</p>
+        </div>
+    </div>
+</body>
+</html>
